@@ -32,9 +32,24 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
 
   return (
     <div className="text-center mt-5">
-      <h2 className="text-2xl">Website will be back in:</h2>
-      <div className="text-4xl mt-3">
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+      <h2 className="text-2xl font-bold">Website will be back in:</h2>
+      <div className="flex justify-center text-4xl mt-3 space-x-2">
+        <div className="p-2 bg-primary rounded-lg">
+          <span>{timeLeft.days}</span>
+          <span className="block text-sm">Days</span>
+        </div>
+        <div className="p-2 bg-primary rounded-lg">
+          <span>{timeLeft.hours}</span>
+          <span className="block text-sm">Hours</span>
+        </div>
+        <div className="p-2 bg-primary rounded-lg">
+          <span>{timeLeft.minutes}</span>
+          <span className="block text-sm">Minutes</span>
+        </div>
+        <div className="p-2 bg-primary rounded-lg">
+          <span>{timeLeft.seconds}</span>
+          <span className="block text-sm">Seconds</span>
+        </div>
       </div>
     </div>
   );
