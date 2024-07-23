@@ -1,76 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
+import Countdown from './Countdown';
+import LanguageAnimation from './LanguageAnimation';
+import background from './assets/milimani.jpg';
 import './index.css';
-
-const languages = ['TypeScript', 'Python', 'TailwindCSS', 'JavaScript'];
-
-const Countdown: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  function getTimeLeft() {
-    const difference = +targetDate - +new Date();
-    let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  }
-
-  return (
-    <div className="text-center mt-5">
-      <h2 className="text-2xl">Website will be back in:</h2>
-      <div className="text-4xl mt-3">
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-      </div>
-    </div>
-  );
-};
 
 const App: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-green-500 text-white">
-      <header className="py-5">
+    <div
+      className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center text-white"
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      <header className="py-5 bg-black bg-opacity-50 w-full text-center">
         <h1 className="text-4xl font-bold">Milimani High School</h1>
         <p className="text-xl mt-2">Our website is undergoing maintenance and security updates.</p>
       </header>
-      <main className="flex flex-col items-center my-10">
+      <main className="flex flex-col items-center my-10 bg-black bg-opacity-50 p-5 rounded-lg">
         <Countdown targetDate={new Date('2024-12-31T00:00:00')} />
-        <div className="flex flex-wrap justify-center mt-10">
-          {languages.map((language, index) => (
-            <motion.div
-              key={index}
-              className="m-3 p-3 bg-white text-gray-800 shadow-lg rounded"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              animate={{ rotate: [0, 360, 0], transition: { duration: 2, repeat: Infinity } }}
-            >
-              {language}
-            </motion.div>
-          ))}
-        </div>
+        <p className="text-center mt-5 max-w-2xl">
+          Milimani High School is dedicated to providing quality education and a conducive learning environment. We are currently improving our website to serve you better. Stay tuned for updates!
+        </p>
+        <LanguageAnimation />
       </main>
-      <footer className="mt-auto py-5">
+      <footer className="mt-auto py-5 bg-black bg-opacity-50 w-full text-center">
         <p>Contact us: info@milimanihighschool.co.ke</p>
-        <div className="flex space-x-4 mt-2">
+        <div className="flex justify-center space-x-4 mt-2">
           <a href="#" className="text-blue-300">Twitter</a>
           <a href="#" className="text-blue-600">Facebook</a>
           <a href="#" className="text-red-600">YouTube</a>
         </div>
       </footer>
+      <div className="fixed bottom-5 right-5 bg-black bg-opacity-50 p-4 rounded-lg shadow-lg">
+        <p>Contact us: info@milimanihighschool.co.ke</p>
+      </div>
     </div>
   );
 }
