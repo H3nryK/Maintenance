@@ -11,8 +11,7 @@ const MaintenancePage = () => {
   });
 
   useEffect(() => {
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 20);
+    const endDate = new Date('2025-01-31T23:59:59');
 
     const timer = setInterval(() => {
       const now = new Date();
@@ -67,7 +66,7 @@ const MaintenancePage = () => {
 
             {/* Title and Description */}
             <div className="space-y-6">
-              <h1 className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+              <h1 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
                 Under Maintenance
               </h1>
               <p className="text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed">
