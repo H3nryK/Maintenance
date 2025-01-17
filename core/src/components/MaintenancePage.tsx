@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Wrench, MessageSquare, ArrowRight } from 'lucide-react';
+import { MessageSquare, ArrowRight } from 'lucide-react';
 import Layout from './layout';
+import Logo from '../assets/logo.png';
 
 const MaintenancePage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -58,9 +59,9 @@ const MaintenancePage = () => {
             <div className="relative inline-block">
               <div className="absolute inset-0 rounded-full bg-purple-500/20 animate-ping-slow blur-xl" />
               <div className="relative animate-float">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-full">
-                  <Wrench className="w-16 h-16 text-white transform -rotate-12" />
-                </div>
+              <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-full">
+                <img src={Logo} alt="Logo" className="w-16 h-16 transform -rotate-12" />
+              </div>
               </div>
             </div>
 
